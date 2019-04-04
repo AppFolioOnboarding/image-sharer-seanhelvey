@@ -22,4 +22,11 @@ class ImageTest < ActiveSupport::TestCase
     image = Image.new(url: 'test')
     assert_not image.valid?
   end
+
+  def test_image__recent_in_order
+    older_image = Image.create(url: 'https://www.w3schools.com/w3css/img_lights.jpg')
+    newer_image = Image.create(url: 'https://www.w3schools.com/w3css/img_lights.jpg')
+
+    assert_equal [newer_image, older_image], Image.recent.to_a.first(2)
+  end
 end

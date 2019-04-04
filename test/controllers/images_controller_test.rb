@@ -17,9 +17,14 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  def test_index
+  def test_show
     image = images(:one)
     get image_url(image)
+    assert_response :success
+  end
+
+  def test_index
+    get images_url
     assert_response :success
   end
 end
