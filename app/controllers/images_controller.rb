@@ -1,4 +1,8 @@
 class ImagesController < ApplicationController
+  def index
+    @images = Image.all.recent
+  end
+
   def new
     @image = Image.new
   end
