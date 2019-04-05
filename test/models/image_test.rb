@@ -29,4 +29,16 @@ class ImageTest < ActiveSupport::TestCase
 
     assert_equal [newer_image, older_image], Image.recent.to_a.first(2)
   end
+
+  def test_image__add_remove_tags
+    image = Image.new(url: 'https://www.w3schools.com/w3css/img_lights.jpg')
+    assert image.valid?
+    assert image.tag_list.empty?
+
+    image.tag_list.add('awesome')
+    assert image.tag_list.include? 'awesome'
+
+    image.tag_list.remove('awesome')
+    assert image.tag_list.empty?
+  end
 end
