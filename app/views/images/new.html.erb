@@ -1,9 +1,9 @@
 <%= simple_form_for @image do |f| %>
-  <%= f.label :url %>
   <%= f.input :url %>
   <% if @image.errors.any? %>
     <%= f.hint 'Please enter valid image url' %>
     <%= f.error :url, id: 'url_error' %>
   <% end %>
+  <%= f.input :tag_list, label: 'Comma separated tags', placeholder: 'funny, awesome, etc.'%>
   <%= f.button :submit, class: "btn-primary" %>
 <% end %>
