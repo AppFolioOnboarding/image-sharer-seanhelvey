@@ -19,7 +19,7 @@ Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
 Metrics/LineLength:
-  Max: 155  # Maximum line length from `rails new`
+  Max: 170  # Maximum line length from `rails new`
 
 Rails:
   Enabled: true

@@ -26,6 +26,21 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
   end
 
+  def destroy
+    @image = Image.find(params[:id])
+
+    message = if @image.destroy
+                'Image destroyed successfully'
+              else
+                'Image could not be destroyed'
+              end
+
+    respond_to do |format|
+      format.html { redirect_to images_url, notice: message }
+      format.json { head :ok }
+    end
+  end
+
   private
 
   def image_params
