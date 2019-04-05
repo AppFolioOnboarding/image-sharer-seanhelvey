@@ -1,6 +1,11 @@
 class ImagesController < ApplicationController
   def index
-    @images = Image.all.recent
+    current_tag = params[:tag]
+    @images = if current_tag
+                Image.all.recent.tagged_with(current_tag)
+              else
+                Image.all.recent
+              end
   end
 
   def new

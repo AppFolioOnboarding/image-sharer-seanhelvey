@@ -51,8 +51,17 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  def test_index
+  def test_index__without_params
     get images_url
     assert_response :success
+  end
+
+  def test_index__with_params
+    Image.create url: 'https://www.w3schools.com/w3css/img_lights.jpg', tag_list: 'lights'
+    Image.create url: 'https://dphhs.mt.gov/portals/85/hcsd/images/childcare/STARS/STARS%20Only.png', tag_list: 'stars'
+
+    get images_url(tag: 'stars')
+    assert_response :success
+    assert_select 'img', 1
   end
 end
