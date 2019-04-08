@@ -5,4 +5,6 @@
       <%= link_to tag, images_path(:tag => tag) %>
     </span>
   <% end %>
+  <%= button_to "Delete Image", { action: "destroy", id: @image.id },
+                method: :delete, data: { confirm: "Are you sure?" } %>
 </div>

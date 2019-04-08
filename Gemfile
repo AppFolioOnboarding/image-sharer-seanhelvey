@@ -18,6 +18,7 @@ gem 'jquery-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'ae_page_objects'
 gem 'bootstrap'
 gem 'simple_form'
 gem 'webpacker', '~> 3.0'

@@ -46,7 +46,7 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_show
-    image = images(:one)
+    image = create_image!
     get image_url(image)
     assert_response :success
   end
@@ -57,11 +57,20 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_index__with_params
-    Image.create url: 'https://www.w3schools.com/w3css/img_lights.jpg', tag_list: 'lights'
-    Image.create url: 'https://dphhs.mt.gov/portals/85/hcsd/images/childcare/STARS/STARS%20Only.png', tag_list: 'stars'
+    create_image!
+    create_image!(url: 'https://dphhs.mt.gov/portals/85/hcsd/images/childcare/STARS/STARS%20Only.png', tag_list: 'stars')
 
     get images_url(tag: 'stars')
     assert_response :success
     assert_select 'img', 1
+  end
+
+  def test_destroy
+    image = create_image!
+    assert_difference('Image.count', -1) do
+      assert_difference('ActsAsTaggableOn::Tagging.count', -1) do
+        delete image_url(image)
+      end
+    end
   end
 end

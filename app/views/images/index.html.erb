@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row images">
 <% @images.each do |image| %>
     <div class="card">
       <%= link_to image_tag(image.url, :class => "img"), image_path(image.id) %>

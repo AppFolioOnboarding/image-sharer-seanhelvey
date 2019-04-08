@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Image.create([
-  { url: 'https://images.unsplash.com/photo-1485067801970-70573e3f77d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' },
+  { url: 'https://images.unsplash.com/photo-1485067801970-70573e3f77d0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', tag_list: 'awesome' },
   { url: 'https://images.unsplash.com/photo-1502770513380-138d6d3a51dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80' },
   { url: 'https://images.unsplash.com/photo-1502394202744-021cfbb17454?ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80' },
   { url: 'https://images.unsplash.com/photo-1446388356081-508ba00ad58b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80' },
