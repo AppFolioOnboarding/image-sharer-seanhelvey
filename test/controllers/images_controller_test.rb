@@ -1,12 +1,12 @@
 require 'test_helper'
 
 class ImagesControllerTest < ActionDispatch::IntegrationTest
-  def test_create__succeed
-    assert_difference('Image.count') do
+  def test_create__fails_without_tag
+    assert_no_difference('Image.count') do
       post images_url, params: { image: { url: 'https://www.w3schools.com/w3css/img_lights.jpg' } }
     end
 
-    assert_redirected_to image_path(Image.last)
+    assert_response :success
   end
 
   def test_create__with_one_tag
@@ -29,17 +29,16 @@ class ImagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_create__with_invalid_tags
-    assert_difference('Image.count') do
+    assert_no_difference('Image.count') do
       post images_url, params: { image: { url: 'https://www.w3schools.com/w3css/img_lights.jpg', tag_list: ',,,' } }
     end
 
-    assert_redirected_to image_path(Image.last)
-    assert_empty Image.last.tag_list
+    assert_response :success
   end
 
   def test_create__fail_invalid_url
     assert_no_difference('Image.count') do
-      post images_url, params: { image: { url: 'test' } }
+      post images_url, params: { image: { url: 'test', tag_list: 'awesome' } }
     end
 
     assert_response :success
